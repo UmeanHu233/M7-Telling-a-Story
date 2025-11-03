@@ -1,0 +1,139 @@
+[gd_scene load_steps=12 format=3 uid="uid://b8o5qo3on08yk"]
+
+[ext_resource type="StyleBox" uid="uid://b6w2lq182ka4i" path="res://lessons/button_black.tres" id="1_5dtme"]
+[ext_resource type="Shader" uid="uid://cs15e2hgd2lan" path="res://assets/sliding_background.gdshader" id="1_758ep"]
+[ext_resource type="StyleBox" uid="uid://j2duod3r37om" path="res://lessons/button_blue.tres" id="2_6cfwb"]
+[ext_resource type="Texture2D" uid="uid://bnly1gkbxw6b5" path="res://assets/bubble_pattern.png" id="2_hoxo3"]
+[ext_resource type="Script" uid="uid://dhsjgposivl1e" path="res://lessons/dialogue.gd" id="3_nggfo"]
+[ext_resource type="Texture2D" uid="uid://copkt78vgp37i" path="res://assets/sophia.png" id="3_q2h7b"]
+[ext_resource type="Texture2D" uid="uid://d000xjtr4iqtk" path="res://assets/emotion_regular.png" id="4_hoxo3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6cfwb"]
+content_margin_left = 22.0
+content_margin_top = 15.0
+content_margin_right = 22.0
+content_margin_bottom = 15.0
+bg_color = Color(0, 0, 0, 1)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5942293, 0.87909925, 0.6704599, 1)
+corner_radius_top_left = 48
+corner_radius_top_right = 48
+corner_radius_bottom_right = 48
+corner_radius_bottom_left = 48
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ei3wx"]
+content_margin_left = 32.0
+content_margin_top = 32.0
+content_margin_right = 32.0
+content_margin_bottom = 32.0
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 48
+corner_radius_top_right = 48
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="Theme" id="Theme_6cfwb"]
+default_font_size = 48
+Button/styles/disabled = ExtResource("1_5dtme")
+Button/styles/focus = SubResource("StyleBoxFlat_6cfwb")
+Button/styles/hover = ExtResource("2_6cfwb")
+Button/styles/normal = ExtResource("1_5dtme")
+Button/styles/pressed = ExtResource("2_6cfwb")
+RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+RichTextLabel/styles/normal = SubResource("StyleBoxFlat_ei3wx")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iq77p"]
+shader = ExtResource("1_758ep")
+shader_parameter/pattern_sampler = ExtResource("2_hoxo3")
+shader_parameter/bg_color = Color(0.8091892, 0.99040455, 0.6241585, 1)
+shader_parameter/pattern_color = Color(0, 0, 0, 1)
+shader_parameter/pattern_size = 256.0
+
+[node name="Dialogue" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_6cfwb")
+script = ExtResource("3_nggfo")
+
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_iq77p")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Body" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.017
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = 205.64
+offset_right = -165.0
+grow_vertical = 0
+texture = ExtResource("3_q2h7b")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Expression" type="TextureRect" parent="Body"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 52.0
+offset_top = 57.0
+offset_right = -60.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_hoxo3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -156.0
+offset_top = 428.0
+offset_right = -557.0
+offset_bottom = -521.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Hello World !"
+fit_content = true
+visible_characters = 5
+visible_ratio = 0.461
+
+[node name="NextButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -53.0
+offset_top = -41.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Next"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
