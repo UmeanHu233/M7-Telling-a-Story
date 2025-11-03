@@ -1,18 +1,20 @@
 extends Control
 
-@onready var rich_text_label: RichTextLabel = %RichTextLabel
-@onready var next_button: Button = %NextButton
-@onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
-
 var dialogue_items : Array[String] = [
-	"Man are Man !",
-	"Woman are Woman !",
-	"You are You !",
-	"Me are Me !",
-	"We are all Humans !"
+	"Hello, hello!",
+	"My name is Hajimi",
+	"I am the main character in this game",
+	"And I'm smart",
+	"I know where u live",
+	"I will go to your house and find you",
+	"After that, I will #@#!!@ you"
 	]
 	
 var current_item_index := 0
+
+@onready var rich_text_label: RichTextLabel = %RichTextLabel
+@onready var next_button: Button = %NextButton
+@onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
 
 func _ready() -> void:
 	show_text()
@@ -22,10 +24,14 @@ func _ready() -> void:
 func show_text() -> void:
 	var current_item := dialogue_items[current_item_index]
 	rich_text_label.text = current_item
-	rich_text_label.visible_ratio = 0.0
+	rich_text_label.visible_ratio = 1.0
 	var tween := create_tween()
 	var text_appearing_duration := 1.5
 	tween.tween_property(rich_text_label,"visible_ratio",1.0,text_appearing_duration)
+	var sound_max_offset := audio_stream_player.stream.get_length() - text_appearing_duration
+	var sound_start_position := randf() * sound_max_offset
+	audio_stream_player.play(sound_start_position)
+	tween.finished.connect(audio_stream_player.stop)
 
 func advance() -> void:
 	current_item_index += 1
