@@ -1,13 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://b8o5qo3on08yk"]
+[gd_scene load_steps=13 format=3 uid="uid://c5hks0yvn11s4"]
 
-[ext_resource type="StyleBox" uid="uid://b6w2lq182ka4i" path="res://lessons/button_black.tres" id="1_5dtme"]
-[ext_resource type="Shader" uid="uid://cs15e2hgd2lan" path="res://assets/sliding_background.gdshader" id="1_758ep"]
-[ext_resource type="StyleBox" uid="uid://j2duod3r37om" path="res://lessons/button_blue.tres" id="2_6cfwb"]
-[ext_resource type="Texture2D" uid="uid://bnly1gkbxw6b5" path="res://assets/bubble_pattern.png" id="2_hoxo3"]
-[ext_resource type="Script" uid="uid://dhsjgposivl1e" path="res://lessons/dialogue.gd" id="3_nggfo"]
-[ext_resource type="Texture2D" uid="uid://copkt78vgp37i" path="res://assets/sophia.png" id="3_q2h7b"]
-[ext_resource type="Texture2D" uid="uid://d000xjtr4iqtk" path="res://assets/emotion_regular.png" id="4_hoxo3"]
-[ext_resource type="AudioStream" uid="uid://bafjgt7eu3x5a" path="res://assets/talking_synth.ogg" id="8_rduj4"]
+[ext_resource type="StyleBox" uid="uid://b6w2lq182ka4i" path="res://lessons/button_black.tres" id="1_13kob"]
+[ext_resource type="StyleBox" uid="uid://j2duod3r37om" path="res://lessons/button_blue.tres" id="2_2l66d"]
+[ext_resource type="Script" uid="uid://dhsjgposivl1e" path="res://lessons/dialogue.gd" id="3_8poul"]
+[ext_resource type="Shader" uid="uid://cs15e2hgd2lan" path="res://assets/sliding_background.gdshader" id="4_8k2r0"]
+[ext_resource type="Texture2D" uid="uid://bnly1gkbxw6b5" path="res://assets/bubble_pattern.png" id="5_mv62c"]
+[ext_resource type="Texture2D" uid="uid://copkt78vgp37i" path="res://assets/sophia.png" id="6_21o7j"]
+[ext_resource type="Texture2D" uid="uid://d000xjtr4iqtk" path="res://assets/emotion_regular.png" id="7_q184j"]
+[ext_resource type="AudioStream" uid="uid://bafjgt7eu3x5a" path="res://assets/talking_synth.ogg" id="8_856fr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6cfwb"]
 content_margin_left = 22.0
@@ -39,17 +39,19 @@ corner_radius_bottom_left = 32
 
 [sub_resource type="Theme" id="Theme_6cfwb"]
 default_font_size = 48
-Button/styles/disabled = ExtResource("1_5dtme")
+Button/styles/disabled = ExtResource("1_13kob")
 Button/styles/focus = SubResource("StyleBoxFlat_6cfwb")
-Button/styles/hover = ExtResource("2_6cfwb")
-Button/styles/normal = ExtResource("1_5dtme")
-Button/styles/pressed = ExtResource("2_6cfwb")
+Button/styles/hover = ExtResource("2_2l66d")
+Button/styles/normal = ExtResource("1_13kob")
+Button/styles/pressed = ExtResource("2_2l66d")
+HBoxContainer/constants/separation = 20
 RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
 RichTextLabel/styles/normal = SubResource("StyleBoxFlat_ei3wx")
+VBoxContainer/constants/separation = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iq77p"]
-shader = ExtResource("1_758ep")
-shader_parameter/pattern_sampler = ExtResource("2_hoxo3")
+shader = ExtResource("4_8k2r0")
+shader_parameter/pattern_sampler = ExtResource("5_mv62c")
 shader_parameter/bg_color = Color(0.8091892, 0.99040455, 0.6241585, 1)
 shader_parameter/pattern_color = Color(0, 0, 0, 1)
 shader_parameter/pattern_size = 256.0
@@ -62,7 +64,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_6cfwb")
-script = ExtResource("3_nggfo")
+script = ExtResource("3_8poul")
 
 [node name="Background" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_iq77p")
@@ -83,7 +85,7 @@ offset_left = 17.0
 offset_top = 205.64
 offset_right = -165.0
 grow_vertical = 0
-texture = ExtResource("3_q2h7b")
+texture = ExtResource("6_21o7j")
 expand_mode = 1
 stretch_mode = 5
 
@@ -98,7 +100,7 @@ offset_right = -60.0
 offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_hoxo3")
+texture = ExtResource("7_q184j")
 expand_mode = 1
 stretch_mode = 5
 
@@ -138,4 +140,4 @@ text = "Next"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("8_rduj4")
+stream = ExtResource("8_856fr")

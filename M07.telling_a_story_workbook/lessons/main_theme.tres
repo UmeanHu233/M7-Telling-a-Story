@@ -25,5 +25,7 @@ corner_radius_bottom_left = 32
 [resource]
 default_font_size = 48
 Button/styles/normal = SubResource("StyleBoxFlat_a4fo1")
+HBoxContainer/constants/separation = 20
 RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
 RichTextLabel/styles/normal = SubResource("StyleBoxFlat_ei3wx")
+VBoxContainer/constants/separation = 20
